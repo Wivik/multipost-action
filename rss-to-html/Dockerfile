@@ -3,7 +3,7 @@ FROM python:3.11
 COPY rss-to-html.py /rss-to-html.py
 ADD templates /templates
 
-RUN pip install jinja2 feedparse
+RUN pip install jinja2 feedparser
 
 ENTRYPOINT ["python", "/rss-to-html.py"]
 
