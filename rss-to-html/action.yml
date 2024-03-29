@@ -24,6 +24,7 @@ runs:
         cache: 'pip'
 
     - name: Install depedencies
+      shell: bash
       run: pip install -r requirements.txt
 
 
