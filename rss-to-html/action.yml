@@ -22,7 +22,20 @@ runs:
 
     - name: Install depedencies
       shell: bash
-      run: pip install -r requirements.txt
+      run: pip install feedparser jinja2
 
+    - name: Execute script
+      shell: bash
+      id: script
+      env:
+        FEED_URL: ${{ inputs.rss-feed }}
+      run: python rss-to-html.py $FEED_URL >> ${{ GITHUB_OUTPUT }}
 
+    - name: Convert python output to github output
+      shell: bash
+      id: out
+      env:
+        RESULT: ${{ steps.script.outputs }}
+      run: |
+        echo $RESULT
 
