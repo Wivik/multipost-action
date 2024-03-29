@@ -1,0 +1,1 @@
+# infomaniak-newsletter-action
