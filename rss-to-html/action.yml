@@ -5,12 +5,8 @@ inputs:
     description: 'RSS feed URL'
     required: true
 outputs:
-  article-title:
-    description: "RSS feed article title"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
-  article-content:
-    description: "RSS feed article content"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  result:
+    description: "RSS feed result"
 runs:
   using: "docker"
   image: "Dockerfile"
