@@ -1,0 +1,30 @@
+name: 'RSS to HTML'
+description: 'Fetch the latest entry for a RSS feed and return the title and content'
+inputs:
+  rss-feed:
+    description: 'RSS feed URL'
+    required: true
+outputs:
+  article-title:
+    description: "RSS feed article title"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+  article-content:
+    description: "RSS feed article content"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - name: checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install depedencies
+      run: pip install -r requirements.txt
+
+
+
