@@ -42,7 +42,7 @@ def fetch_rss_feed(url, num_entries=1):
         return f"Error: {e}"
 
 def convert_html(feed_content):
-    environment = Environment(loader=FileSystemLoader("templates/"))
+    environment = Environment(loader=FileSystemLoader("/templates/"))
     template = environment.get_template("default-email-template.html.j2")
     content = template.render(
         article_title = feed_content['title'],
