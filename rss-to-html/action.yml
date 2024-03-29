@@ -12,26 +12,8 @@ outputs:
     description: "RSS feed article content"
     value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
-  using: "composite"
-  steps:
-    - name: Install depedencies
-      shell: bash
-      run: pip install feedparser jinja2
-
-    - name: Execute script
-      shell: bash
-      id: script
-      env:
-        FEED_URL: ${{ inputs.rss-feed }}
-      run: |
-        result=$(python rss-to-html.py $FEED_URL)
-        echo "result=$result" >> "$GITHUB_OUTPUT"
-
-    - name: Convert python output to github output
-      shell: bash
-      id: out
-      env:
-        RESULT: ${{ steps.script.outputs.result }}
-      run: |
-        echo $RESULT
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.rss-feed }}
 
