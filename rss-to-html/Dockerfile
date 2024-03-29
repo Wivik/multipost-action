@@ -5,5 +5,5 @@ COPY templates /templates
 
 RUN pip install jinja2 feedparser
 
-ENTRYPOINT ["python", "/rss-to-html.py"]
+ENTRYPOINT ["/entrypoint.sh"]
 
