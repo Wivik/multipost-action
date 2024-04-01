@@ -24,7 +24,7 @@ payload = {
     "email": campaign_dest,
 }
 
-print(payload)
+# print(payload)
 
 req = requests.request("POST", url = url_api , json = payload, headers = headers, auth=(client_api, client_secret))
 if req.status_code == 200:
