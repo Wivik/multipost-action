@@ -7,14 +7,14 @@ inputs:
   subject:
     description: 'Campaign mail subject'
     required: true
-  name-from:
+  namefrom:
     description: 'Name to display in the FROM field'
     required: true
   lang:
     description: 'Campaign lang'
     default: 'en'
     required: true
-  address-from:
+  addressfrom:
     description: 'Address to display in the FROM field'
     required: true
   mailinglistid:
@@ -30,8 +30,8 @@ runs:
   args:
     - ${inputs.content}
     - ${inputs.subject}
-    - ${inputs.name-from}
+    - ${inputs.namefrom}
     - ${inputs.lang}
-    - ${inputs.address-from}
+    - ${inputs.addressfrom}
     - ${inputs.mailinglistid}
 
