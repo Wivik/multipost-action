@@ -30,5 +30,5 @@ req = requests.request("POST", url = url_api , json = payload, headers = headers
 if req.status_code == 200:
     print(req.json())
 else:
-    # print(req.status_code)
     print(req.json())
+    print(req.status_code)

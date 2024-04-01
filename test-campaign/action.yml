@@ -4,8 +4,8 @@ inputs:
   id:
     description: 'Newsletter ID'
     required: true
-  address-from:
-    description: 'Address to display in the FROM field'
+  dest:
+    description: 'Address to send the test'
     required: true
 
 outputs:
@@ -16,6 +16,6 @@ runs:
   image: "Dockerfile"
   args:
     - ${inputs.id}
-    - ${inputs.address-from}
+    - ${inputs.dest}
 
 
