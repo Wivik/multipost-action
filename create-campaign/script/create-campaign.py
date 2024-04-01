@@ -49,7 +49,7 @@ payload = {
 
 req = requests.request("POST", url = url_api , json = payload, headers = headers, auth=(client_api, client_secret))
 if req.status_code == 200:
-    print(req.json())
+    print(req.json()['data']['id'])
 else:
     print(req.status_code)
     print(req.json())
