@@ -1,6 +1,10 @@
-# newsletter-action
+# multipost-action
 
-A set of scripts and GitHub Actions to schedule and send a Newsletter hosted at [Infomaniak](https://www.infomaniak.com/en/marketing-events/newsletter-tool) from a RSS feed using [the API](https://newsletter.infomaniak.com/docs/index.html?shell#introduction-beta). These scripts are wrapping the provider's API.
+A set of scripts and GitHub Actions to schedule and send a blog post to multiple channels using the RSS feed as source.
+
+Channels :
+
+- Newsletter hosted at [Infomaniak](https://www.infomaniak.com/en/marketing-events/newsletter-tool) from the RSS feed using [the API](https://newsletter.infomaniak.com/docs/index.html?shell#introduction-beta). These scripts are wrapping the provider's API.
 
 This project is not affiliated with this company.
 
