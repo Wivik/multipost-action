@@ -1,15 +1,21 @@
 import feedparser
 import argparse
+import os
 from jinja2 import Environment, FileSystemLoader
 from datetime import datetime
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
 parser = argparse.ArgumentParser(description="Get latest entry of rss feed")
 parser.add_argument("rss_url", help="URL of the RSS feed")
+parser.add_argument("-p", "--output-path", dest="output_path", help="Path to save the outputs, default is relative", default=script_dir)
+
 
 args = parser.parse_args()
 
 global rss_url
 rss_url = args.rss_url
+output_path = args.output_path
 
 
 def fetch_rss_feed(url, num_entries=1):
@@ -42,7 +48,7 @@ def fetch_rss_feed(url, num_entries=1):
         return f"Error: {e}"
 
 def convert_html(feed_content):
-    environment = Environment(loader=FileSystemLoader("/templates/"))
+    environment = Environment(loader=FileSystemLoader(os.path.join(script_dir, "templates")))
     template = environment.get_template("default-email-template.html.j2")
     content = template.render(
         article_title = feed_content['title'],
@@ -52,11 +58,21 @@ def convert_html(feed_content):
     )
     return content
 
+def write_output(file, content):
+    with open(os.path.join(output_path, file), "w") as output_file:
+        output_file.write(content)
+
 if __name__ == "__main__":
     rss_content = fetch_rss_feed(rss_url)
     html_content = convert_html(rss_content)
-    content = {
-        "title": rss_content['title'],
-        "content": html_content
-    }
-    print(content)
+    # content = {
+    #     "title": rss_content['title'],
+    #     "content": html_content
+    # }
+    # print(content)
+    feed_title = rss_content['title']
+    feed_url = rss_content['url']
+    feed_content = html_content
+    write_output('title.txt', feed_title)
+    write_output('url.txt', feed_url)
+    write_output('content.txt', feed_content)
