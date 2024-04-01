@@ -1,0 +1,37 @@
+name: 'RSS to HTML'
+description: 'Fetch the latest entry for a RSS feed and return the title and content'
+inputs:
+  content:
+    description: 'File path for the content'
+    required: true
+  subject:
+    description: 'Campaign mail subject'
+    required: true
+  name-from:
+    description: 'Name to display in the FROM field'
+    required: true
+  lang:
+    description: 'Campaign lang'
+    default: 'en'
+    required: true
+  address-from:
+    description: 'Address to display in the FROM field'
+    required: true
+  mailinglistid:
+    description: 'List of ID for the mailing lists (1 2 3)'
+    required: true
+
+outputs:
+  result:
+    description: "Creation result"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - -c ${inputs.content}
+    - -s ${inputs.subject}
+    - -n ${inputs.name-from}
+    - -l ${inputs.lang}
+    - -a ${inputs.address-from}
+    - -m ${inputs.mailinglistid}
+
