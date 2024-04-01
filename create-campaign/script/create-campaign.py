@@ -3,7 +3,7 @@ import argparse
 import os
 
 parser = argparse.ArgumentParser(description="Create a new Infomaniak Newsletter service campaign")
-parser.add_argument("-c", "--content", dest="campaign_content", help="Content for the campaign to create", required=True)
+parser.add_argument("-c", "--content", dest="campaign_content", help="File to read for the campaign to create", required=True)
 parser.add_argument("-s", "--subject", dest="campaign_subject", help="Subject for the campaign email", required=True)
 parser.add_argument("-n", "--name-from", dest="campaign_email_from_name", help="Name the from field", required=True)
 parser.add_argument("-l", "--lang", dest="campaign_lang", help="Lang of the content", default="en")
@@ -26,6 +26,10 @@ client_secret = os.environ.get("CLIENT_SECRET")
 if len(campaign_ml_id) == 1:
     campaign_ml_id = int(campaign_ml_id[0])
 
+# open file content
+file_content = open(campaign_content, "r")
+content = file_content.read()
+
 # print(mail_content)
 
 headers = {
@@ -37,7 +41,7 @@ payload = {
     "email_from_name": campaign_email_from_name,
     "lang": campaign_lang,
     "email_from_addr": campaign_email_from_addr,
-    "content": campaign_content,
+    "content": content,
     "mailinglistIds": campaign_ml_id
 }
 
