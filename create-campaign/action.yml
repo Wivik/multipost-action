@@ -28,10 +28,10 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - -c ${inputs.content}
-    - -s ${inputs.subject}
-    - -n ${inputs.name-from}
-    - -l ${inputs.lang}
-    - -a ${inputs.address-from}
-    - -m ${inputs.mailinglistid}
+    - ${inputs.content}
+    - ${inputs.subject}
+    - ${inputs.name-from}
+    - ${inputs.lang}
+    - ${inputs.address-from}
+    - ${inputs.mailinglistid}
 
