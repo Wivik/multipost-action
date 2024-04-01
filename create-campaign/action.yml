@@ -1,5 +1,5 @@
-name: 'RSS to HTML'
-description: 'Fetch the latest entry for a RSS feed and return the title and content'
+name: 'Create newsletrer campaign'
+description: 'Create a new newsletter campaign at infomaniak service'
 inputs:
   content:
     description: 'File path for the content'

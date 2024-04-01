@@ -65,11 +65,6 @@ def write_output(file, content):
 if __name__ == "__main__":
     rss_content = fetch_rss_feed(rss_url)
     html_content = convert_html(rss_content)
-    # content = {
-    #     "title": rss_content['title'],
-    #     "content": html_content
-    # }
-    # print(content)
     feed_title = rss_content['title']
     feed_url = rss_content['url']
     feed_content = html_content
