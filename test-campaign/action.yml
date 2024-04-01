@@ -1,0 +1,21 @@
+name: 'Test newsletter campaign'
+description: 'Test a draft newsletter campaign'
+inputs:
+  id:
+    description: 'Newsletter ID'
+    required: true
+  address-from:
+    description: 'Address to display in the FROM field'
+    required: true
+
+outputs:
+  result:
+    description: "Test result"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${inputs.id}
+    - ${inputs.address-from}
+
+
